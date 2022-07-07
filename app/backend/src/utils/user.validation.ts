@@ -10,6 +10,9 @@ const schema = Joi.object({
 });
 
 const verifyError = (req: Request, _res: Response, next: NextFunction) => {
+  if (!req.body.email) {
+    throw errorMessage(StatusCodes.BAD_REQUEST, 'All fields must be filled');
+  }
   const { error } = schema.validate(req.body);
   if (error) {
     if (error.message.includes('required')) {

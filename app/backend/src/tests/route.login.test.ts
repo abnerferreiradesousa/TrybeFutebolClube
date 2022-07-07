@@ -91,4 +91,16 @@ describe('Rota /login', () => {
     expect(chaiHttpResponse.status).to.be.equal(400)
     expect(chaiHttpResponse.body.message).to.be.eql('"password" length must be at least 8 characters long')
   });
+
+  it('4 - Não é possível logar sem o email.', async () => {
+    chaiHttpResponse = await chai
+       .request(app)
+       .post('/login')
+       .send({
+        "email": "",
+        "password": "hulkEsmaga"
+       })
+    expect(chaiHttpResponse.status).to.be.equal(400)
+    expect(chaiHttpResponse.body.message).to.be.eql("All fields must be filled")
+  });
 });
