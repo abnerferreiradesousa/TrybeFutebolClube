@@ -15,7 +15,7 @@ const verifyError = (req: Request, _res: Response, next: NextFunction) => {
     if (error.message.includes('required')) {
       throw errorMessage(StatusCodes.BAD_REQUEST, error.message);
     }
-    throw errorMessage(StatusCodes.UNPROCESSABLE_ENTITY, error.message);
+    throw errorMessage(StatusCodes.BAD_REQUEST, error.message);
   }
   next();
 };

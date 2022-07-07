@@ -9,7 +9,6 @@ export default class UserController {
       const token = await service.login(email);
       return res.status(200).json({ token });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   };

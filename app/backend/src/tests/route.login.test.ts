@@ -54,7 +54,7 @@ describe('Rota /login', () => {
     (jwt.sign as sinon.SinonStub).restore();
   })
 
-  it('É possível logar com sucesso.', async () => {
+  it('1 - É possível logar com sucesso.', async () => {
     chaiHttpResponse = await chai
        .request(app)
        .post('/login')
@@ -68,7 +68,7 @@ describe('Rota /login', () => {
     expect(chaiHttpResponse.body).to.be.eql(mockJwt)
   });
 
-  it('Não é possível logar com email inválido.', async () => {
+  it('2 - Não é possível logar com email inválido.', async () => {
     chaiHttpResponse = await chai
        .request(app)
        .post('/login')
@@ -76,11 +76,11 @@ describe('Rota /login', () => {
         "email": "hulkbravogmail",
         "password": "hulkEsmaga"
        })
-    expect(chaiHttpResponse.status).to.be.equal(404)
-    expect(chaiHttpResponse.body.message).to.be.eql('error')
+    expect(chaiHttpResponse.status).to.be.equal(400)
+    expect(chaiHttpResponse.body.message).to.be.eql('"email" must be a valid email')
   });
 
-  it('Como senha deve estar com mais de 6 caracteres.', async () => {
+  it('3 - Não é possível logar com senha de no mínimo 8 caracteres.', async () => {
     chaiHttpResponse = await chai
        .request(app)
        .post('/login')
@@ -88,7 +88,7 @@ describe('Rota /login', () => {
         "email": "hulkbravo@gmail.com",
         "password": "hulk"
        })
-    expect(chaiHttpResponse.status).to.be.equal(404)
-    expect(chaiHttpResponse.body.message).to.be.eql('error')
+    expect(chaiHttpResponse.status).to.be.equal(400)
+    expect(chaiHttpResponse.body.message).to.be.eql('"password" length must be at least 8 characters long')
   });
 });
