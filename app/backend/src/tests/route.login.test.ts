@@ -4,7 +4,7 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
-import users from '../database/models/users';
+import User from '../database/models/users';
 
 import { Response } from 'superagent';
 
@@ -23,22 +23,22 @@ describe('Rota /login', () => {
     id: 1,
     username: 'Hulk',
     email: 'hulkbravo@gmail.com'
-  } as users
+  } as User
   
   before(async () => {
     sinon
-      .stub(users, "findOne")
+      .stub(User, "findOne")
       .resolves(mockFindOne);
   });
 
   after(()=>{
-    (users.findOne as sinon.SinonStub).restore();
+    (User.findOne as sinon.SinonStub).restore();
   })
 
   it('É possível logar com sucesso.', async () => {
     chaiHttpResponse = await chai
        .request(app)
-       .get('/login')
+       .post('/login')
        .send({
         "email": "hulkbravo@gmail.com",
         "password": "hulkEsmaga"
@@ -50,7 +50,7 @@ describe('Rota /login', () => {
   it('Não é possível logar com email inválido.', async () => {
     chaiHttpResponse = await chai
        .request(app)
-       .get('/login')
+       .post('/login')
        .send({
         "email": "hulkbravogmail",
         "password": "hulkEsmaga"
@@ -62,7 +62,7 @@ describe('Rota /login', () => {
   it('Como senha deve estar com mais de 6 caracteres.', async () => {
     chaiHttpResponse = await chai
        .request(app)
-       .get('/login')
+       .post('/login')
        .send({
         "email": "hulkbravo@gmail.com",
         "password": "hulk"
