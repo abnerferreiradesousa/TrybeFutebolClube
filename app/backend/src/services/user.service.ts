@@ -3,11 +3,16 @@ import generateJWT from '../utils/generate.jwt';
 import User from '../database/models/users';
 
 export default class UserService {
-  constructor(public model = User) {}
+  public model = User;
+  constructor(model = User) {
+    this.model = model;
+  }
 
   public async login(email: string) {
     const userData = await this.model.findOne({ where: { email } });
-    if (!userData) throw errorMessage(404, 'User Not Found');
+    console.log(userData);
+
+    if (!userData) return errorMessage(404, 'User Not Found');
     const { id, username } = userData;
     const token = generateJWT({ id, username });
     return token;

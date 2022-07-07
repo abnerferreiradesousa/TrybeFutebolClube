@@ -5,8 +5,19 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import User from '../database/models/users';
+import * as jwt from 'jsonwebtoken'
 
 import { Response } from 'superagent';
+
+// user {
+//   dataValues: {
+//     id: 1,
+//     username: 'Admin',
+//     role: 'admin',
+//     email: 'admin@admin.com',
+//     password: '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW'
+//   }
+// }
 
 chai.use(chaiHttp);
 
@@ -24,15 +35,23 @@ describe('Rota /login', () => {
     username: 'Hulk',
     email: 'hulkbravo@gmail.com'
   } as User
+
+  const mockJwt = {
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ikh1bGsifSwiaWF0IjoxNjU3MjMwODQzfQ.BhANw6Git7mgjRkzQjNdOhoj930oc2hTPY30Ea9nPuA"
+  }
   
   before(async () => {
     sinon
       .stub(User, "findOne")
       .resolves(mockFindOne);
+      sinon
+      .stub(jwt, "sign")
+      .resolves(mockJwt.token);
   });
 
   after(()=>{
     (User.findOne as sinon.SinonStub).restore();
+    (jwt.sign as sinon.SinonStub).restore();
   })
 
   it('É possível logar com sucesso.', async () => {
@@ -43,8 +62,10 @@ describe('Rota /login', () => {
         "email": "hulkbravo@gmail.com",
         "password": "hulkEsmaga"
        })
+       console.log(chaiHttpResponse);
+       
     expect(chaiHttpResponse.status).to.be.equal(200)
-    expect(chaiHttpResponse.body.message).to.be.eql(mockFindOne)
+    expect(chaiHttpResponse.body).to.be.eql(mockJwt)
   });
 
   it('Não é possível logar com email inválido.', async () => {

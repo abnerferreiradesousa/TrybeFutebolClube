@@ -1,5 +1,9 @@
 import * as express from 'express';
-import UserController from './controllers/user.controller';
+
+import routes from './routes';
+
+import errorMiddleware from './middlewares/error.middleware';
+// import UserController from './controllers/user.controller';
 
 class App {
   public app: express.Express;
@@ -11,10 +15,11 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
-
-    this.app.post('/login', (req, res) => {
-      new UserController().login(req, res);
-    });
+    this.app.use(routes);
+    // this.app.post('/login', async (req, res, next) => {
+    //   await new UserController().login(req, res, next);
+    // });
+    this.app.use(errorMiddleware);
   }
 
   private config():void {
