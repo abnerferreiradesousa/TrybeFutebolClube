@@ -1,6 +1,7 @@
 import errorMessage from '../utils/error.message';
 import generateJWT from '../utils/generate.jwt';
 import User from '../database/models/users';
+import { StatusCodes } from 'http-status-codes';
 
 export default class UserService {
   public model = User;
@@ -8,11 +9,11 @@ export default class UserService {
     this.model = model;
   }
 
-  public async login(email: string) {
+  public async login(email: string, password: string) {
     const userData = await this.model.findOne({ where: { email } });
-    console.log(userData);
-
-    if (!userData) return errorMessage(404, 'User Not Found');
+    if (!userData) {
+      throw errorMessage(StatusCodes.UNAUTHORIZED, 'Incorrect email or password');
+    }
     const { id, username } = userData;
     const token = generateJWT({ id, username });
     return token;

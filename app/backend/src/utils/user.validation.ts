@@ -10,14 +10,14 @@ const schema = Joi.object({
 });
 
 const verifyError = (req: Request, _res: Response, next: NextFunction) => {
-  if (!req.body.email) {
+  if (!req.body.email || !req.body.password) {
     throw errorMessage(StatusCodes.BAD_REQUEST, 'All fields must be filled');
   }
   const { error } = schema.validate(req.body);
   if (error) {
-    if (error.message.includes('required')) {
-      throw errorMessage(StatusCodes.BAD_REQUEST, error.message);
-    }
+    // if (error.message.includes('required')) {
+    //   throw errorMessage(StatusCodes.UNAUTHORIZED, 'Incorrect email or password');
+    // }
     throw errorMessage(StatusCodes.BAD_REQUEST, error.message);
   }
   next();
