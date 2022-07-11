@@ -182,7 +182,7 @@ describe(getRequirement(11), () => {
   });
 });
 
-describe.only(getRequirement(12), () => {
+describe(getRequirement(12), () => {
   it('O avaliador verificará se ao tentar enviar um token válido no header authorization, o endpoint retornará um objeto com o tipo de usuário', async () => {
     const expectedResult = { "role": "admin" }
     const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
