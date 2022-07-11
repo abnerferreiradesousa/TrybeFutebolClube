@@ -9,27 +9,11 @@ import * as jwt from 'jsonwebtoken'
 
 import { Response } from 'superagent';
 
-// user {
-//   dataValues: {
-//     id: 1,
-//     username: 'Admin',
-//     role: 'admin',
-//     email: 'admin@admin.com',
-//     password: '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW'
-//   }
-// }
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
 describe('Rota /login/validate', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
-
-  describe('1 - Quando existe usuário no database', () => {
-
 
     let chaiHttpResponse: Response;
 
@@ -49,14 +33,10 @@ describe('Rota /login/validate', () => {
       sinon
         .stub(User, "findOne")
         .resolves(mockFindOne);
-        // sinon
-        // .stub(jwt, "sign")
-        // .resolves(mockJwt.token);
     });
 
     after(()=>{
       (User.findOne as sinon.SinonStub).restore();
-      // (jwt.sign as sinon.SinonStub).restore();
     })
 
     it('1 - É possível buscar a role com sucesso.', async () => {
@@ -68,6 +48,4 @@ describe('Rota /login/validate', () => {
       expect(chaiHttpResponse.status).to.be.equal(200)
       expect(chaiHttpResponse.body).to.be.eql({role: mockFindOne.role})
     });
-  })
-
 });
