@@ -93,7 +93,7 @@ describe('Rota /teams', () => {
       // (jwt.sign as sinon.SinonStub).restore();
     })
 
-    it('1 - É possível buscar um time individualmente com sucesso.', async () => {
+    it('2 - É possível buscar um time individualmente com sucesso.', async () => {
       chaiHttpResponse = await chai
         .request(app)
         .get('/teams/1')
