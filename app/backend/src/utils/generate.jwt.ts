@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
-import IUserPayload from '../interfaces/user.interface';
+import { User } from '../types/index';
 
-const generateJWT = (payload: IUserPayload) => {
+const generateJWT = (payload: User): string => {
   const token = jwt.sign({ data: payload }, process.env.JWT_SECRET = 'hulkEsmaga', {});
   return token;
 };

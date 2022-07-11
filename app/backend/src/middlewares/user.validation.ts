@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
 import * as Joi from 'joi';
 
-import errorMessage from './error.message';
+import errorMessage from '../utils/error.message';
 
 const schema = Joi.object({
   email: Joi.string().email().required(),
@@ -15,9 +15,6 @@ const verifyError = (req: Request, _res: Response, next: NextFunction) => {
   }
   const { error } = schema.validate(req.body);
   if (error) {
-    // if (error.message.includes('required')) {
-    //   throw errorMessage(StatusCodes.UNAUTHORIZED, 'Incorrect email or password');
-    // }
     throw errorMessage(StatusCodes.BAD_REQUEST, error.message);
   }
   next();

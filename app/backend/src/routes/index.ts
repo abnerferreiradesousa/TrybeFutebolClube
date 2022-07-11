@@ -1,11 +1,8 @@
 import { Router } from 'express';
-import UserController from '../controllers/user.controller';
-import verifyError from '../utils/user.validation';
+import routeUser from './routeUser';
 
 const route = Router();
 
-const userController = new UserController();
-
-route.post('/login', verifyError, userController.login);
+route.use('/login', routeUser);
 
 export default route;
