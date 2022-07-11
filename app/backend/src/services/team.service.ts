@@ -21,7 +21,7 @@ export default class TeamService {
   public async getById(id: number): Promise<Team> {
     const teamData = await this.model.findOne({ where: { id } });
     if (!teamData) {
-      throw errorMessage(StatusCodes.UNAUTHORIZED, 'Incorrect email or password');
+      throw errorMessage(StatusCodes.UNAUTHORIZED, 'Not found');
     }
     return teamData;
   }
