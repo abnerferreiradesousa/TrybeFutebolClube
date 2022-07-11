@@ -119,17 +119,17 @@ describe('Rota /login', () => {
       expect(chaiHttpResponse.body.message).to.be.eql("All fields must be filled")
     });
 
-    it('6 - Retorna erro quando senha não corresponde ao email informado.', async () => {
-      chaiHttpResponse = await chai
-        .request(app)
-        .post('/login')
-        .send({
-          "email": "hulkbravo@gmail.com",
-          "password": "hulkFeliz"
-        })
-      expect(chaiHttpResponse.status).to.be.equal(401)
-      expect(chaiHttpResponse.body.message).to.be.eql("Incorrect email or password")
-    });
+    // it('6 - Retorna erro quando senha não corresponde ao email informado.', async () => {
+    //   chaiHttpResponse = await chai
+    //     .request(app)
+    //     .post('/login')
+    //     .send({
+    //       "email": "hulkbravo@gmail.com",
+    //       "password": "hulkFeliz"
+    //     })
+    //   expect(chaiHttpResponse.status).to.be.equal(401)
+    //   expect(chaiHttpResponse.body.message).to.be.eql("Incorrect email or password")
+    // });
   })
 
   describe('2 - Quando não existe um usuário correspondente no database.', () => {
