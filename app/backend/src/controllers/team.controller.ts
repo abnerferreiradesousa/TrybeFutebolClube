@@ -6,8 +6,7 @@ export default class TeamController {
   public getAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const service = new TeamService();
-      const { email } = req.body;
-      const teams = await service.getAll(email);
+      const teams = await service.getAll();
       return res.status(StatusCodes.OK).json(teams);
     } catch (error) {
       next(error);
@@ -18,7 +17,7 @@ export default class TeamController {
     try {
       const service = new TeamService();
       const { id } = req.params;
-      const team = await service.getById(id);
+      const team = await service.getById(Number(id));
       return res.status(StatusCodes.OK).json(team);
     } catch (error) {
       next(error);
