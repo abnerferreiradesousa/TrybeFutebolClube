@@ -10,13 +10,8 @@ export default class TeamService {
 
   public async getAll(): Promise<Team[]> {
     const teamsData = await this.model.findAll();
-    // if (!userData) {
-    //   throw errorMessage(StatusCodes.UNAUTHORIZED, ');
-    // }
     return teamsData;
   }
-
-  // Como pegar os dados que estão dentro do userData?
 
   public async getById(id: number): Promise<Team> {
     const teamData = await this.model.findOne({ where: { id } });
