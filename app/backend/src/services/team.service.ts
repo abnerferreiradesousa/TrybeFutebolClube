@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import errorMessage from '../utils/error.message';
-import Team from '../database/models/users';
+import Team from '../database/models/teams';
 
 export default class TeamService {
   public model = Team;
