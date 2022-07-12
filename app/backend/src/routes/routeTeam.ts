@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import TeamController from '../controllers/team.controller';
-// import authToken from '../middlewares/auth.token.middleware';
 
 const teamController = new TeamController();
 

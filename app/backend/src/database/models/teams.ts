@@ -1,6 +1,6 @@
 import { Model, STRING, INTEGER } from 'sequelize';
 import db from '.';
-import Match from './matches';
+// import Match from './matches';
 
 class Team extends Model {
   id: number;
@@ -25,7 +25,8 @@ Team.init({
   timestamps: false,
 });
 
-Match.hasMany(Team, { foreignKey: 'id', as: 'teams' });
+// belongsTo testar no arquivo teams
+// hasOne arquivo matches
 // Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
 
 export default Team;

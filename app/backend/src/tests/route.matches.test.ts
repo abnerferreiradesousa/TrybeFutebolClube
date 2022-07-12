@@ -33,10 +33,10 @@ describe('Rota /matches', () => {
           "teamName": "São Paulo"
         },
         "teamAway": {
-          "teamName": "Grêmio"
+          "teamName": "Grêmio"  
         }
       },
-    ] as ITeam[];
+    ] as Match[];
 
     const mockJwt = {
       token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ikh1bGsifSwiaWF0IjoxNjU3MjMwODQzfQ.BhANw6Git7mgjRkzQjNdOhoj930oc2hTPY30Ea9nPuA"
