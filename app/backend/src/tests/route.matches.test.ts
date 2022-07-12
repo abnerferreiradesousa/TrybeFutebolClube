@@ -4,16 +4,17 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
-import Team from '../database/models/teams';
+import Match from '../database/models/matches';
 import * as jwt from 'jsonwebtoken'
 
 import { Response } from 'superagent';
+import ITeam from '../interfaces/team.interface';
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Rota /teams', () => {
+describe('Rota /matches', () => {
 
   describe('Quando existe times no database', () => {
 
@@ -23,17 +24,19 @@ describe('Rota /teams', () => {
     const mockFindAll = [
       {
         "id": 1,
-        "teamName": "Avaí/Kindermann"
+        "homeTeam": 16,
+        "homeTeamGoals": 1,
+        "awayTeam": 8,
+        "awayTeamGoals": 1,
+        "inProgress": false,
+        "teamHome": {
+          "teamName": "São Paulo"
+        },
+        "teamAway": {
+          "teamName": "Grêmio"
+        }
       },
-      {
-        "id": 2,
-        "teamName": "Bahia"
-      },
-      {
-        "id": 3,
-        "teamName": "Botafogo"
-      },
-    ] as Team[];
+    ] as ITeam[];
 
     const mockJwt = {
       token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ikh1bGsifSwiaWF0IjoxNjU3MjMwODQzfQ.BhANw6Git7mgjRkzQjNdOhoj930oc2hTPY30Ea9nPuA"
@@ -41,7 +44,7 @@ describe('Rota /teams', () => {
     
     before(async () => {
       sinon
-        .stub(Team, "findAll")
+        .stub(Match, "findAll")
         .resolves(mockFindAll);
         // sinon
         // .stub(jwt, "sign")
@@ -49,7 +52,7 @@ describe('Rota /teams', () => {
     });
 
     after(()=>{
-      (Team.findAll as sinon.SinonStub).restore();
+      (Match.findAll as sinon.SinonStub).restore();
       // (jwt.sign as sinon.SinonStub).restore();
     })
 
@@ -63,44 +66,5 @@ describe('Rota /teams', () => {
       expect(chaiHttpResponse.body).to.be.eql(mockFindAll)
     });
   })
-
-
-  describe('Quando existe times no database', () => {
-
-
-    let chaiHttpResponse: Response;
-
-    const mockFindOne = {
-        id: 1,
-        teamName: "Avaí/Kindermann"
-      } as Team;
-
-    const mockJwt = {
-      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ikh1bGsifSwiaWF0IjoxNjU3MjMwODQzfQ.BhANw6Git7mgjRkzQjNdOhoj930oc2hTPY30Ea9nPuA"
-    }
-    
-    before(async () => {
-      sinon
-        .stub(Team, "findOne")
-        .resolves(mockFindOne);
-        // sinon
-        // .stub(jwt, "sign")
-        // .resolves(mockJwt.token);
-    });
-
-    after(()=>{
-      (Team.findOne as sinon.SinonStub).restore();
-      // (jwt.sign as sinon.SinonStub).restore();
-    })
-
-    it('2 - É possível buscar um time individualmente com sucesso.', async () => {
-      chaiHttpResponse = await chai
-        .request(app)
-        .get('/teams/1')
-        .set({ "authorization": mockJwt.token })
-        
-      expect(chaiHttpResponse.status).to.be.equal(200)
-      expect(chaiHttpResponse.body).to.be.eql(mockFindOne)
-    });
-  })
+  
 });
