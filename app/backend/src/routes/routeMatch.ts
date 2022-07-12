@@ -6,6 +6,8 @@ const matchController = new MatchController();
 
 const routeMatch = Router();
 
+routeMatch.get('/inProgress', matchController.getByProgress);
+
 routeMatch.get('/', matchController.getAll);
 
 export default routeMatch;

@@ -15,4 +15,14 @@ export default class TeamService {
       ] });
     return matchesData;
   }
+
+  public async getByProgress(inProgress: string) {
+    const matchesData = await this.model.findAll({
+      where: { inProgress: inProgress === 'true' ? 1 : 0 },
+      include: [
+        { model: Team, as: 'teamAway', attributes: ['teamName'] },
+        { model: Team, as: 'teamHome', attributes: ['teamName'] },
+      ] });
+    return matchesData;
+  }
 }

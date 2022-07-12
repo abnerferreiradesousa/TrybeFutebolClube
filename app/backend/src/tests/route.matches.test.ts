@@ -9,6 +9,7 @@ import * as jwt from 'jsonwebtoken'
 
 import { Response } from 'superagent';
 import ITeam from '../interfaces/team.interface';
+import { Model } from 'sequelize';
 
 chai.use(chaiHttp);
 
@@ -36,7 +37,7 @@ describe('Rota /matches', () => {
           "teamName": "Grêmio"  
         }
       },
-    ] as Match[];
+    ]
 
     const mockJwt = {
       token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6Ikh1bGsifSwiaWF0IjoxNjU3MjMwODQzfQ.BhANw6Git7mgjRkzQjNdOhoj930oc2hTPY30Ea9nPuA"
@@ -45,7 +46,7 @@ describe('Rota /matches', () => {
     before(async () => {
       sinon
         .stub(Match, "findAll")
-        .resolves(mockFindAll);
+        .resolves(mockFindAll as unknown as Match[]) ;
         // sinon
         // .stub(jwt, "sign")
         // .resolves(mockJwt.token);

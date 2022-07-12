@@ -12,4 +12,15 @@ export default class MatchController {
       next(error);
     }
   };
+
+  public getByProgress = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const service = new MatchService();
+      const { inProgress } = req.query;
+      const Matchs = await service.getByProgress(inProgress as string);
+      return res.status(StatusCodes.OK).json(Matchs);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
