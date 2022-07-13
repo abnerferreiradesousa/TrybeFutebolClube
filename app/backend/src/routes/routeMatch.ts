@@ -12,4 +12,6 @@ routeMatch.get('/inProgress', matchController.getByProgress);
 
 routeMatch.get('/', matchController.getAll);
 
+routeMatch.patch('/:id/finish', matchController.updateProgress);
+
 export default routeMatch;

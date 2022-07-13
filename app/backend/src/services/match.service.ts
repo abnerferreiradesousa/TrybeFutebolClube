@@ -35,4 +35,12 @@ export default class TeamService {
       inProgress: true,
     };
   }
+
+  public async updateProgress(id: number) {
+    const progress = await this.model.update(
+      { inProgress: 0 },
+      { where: { id } },
+    );
+    return progress && 'Finished';
+  }
 }
