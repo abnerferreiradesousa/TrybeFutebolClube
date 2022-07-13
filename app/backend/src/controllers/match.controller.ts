@@ -27,6 +27,7 @@ export default class MatchController {
   public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const service = new MatchService();
+      console.log('Pokemon zangado!');
       const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = req.body;
       const dataMatch = { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals };
       const match = await service.create(dataMatch);

@@ -8,10 +8,10 @@ const routeMatch = Router();
 
 routeMatch.post('/', authToken, matchController.create);
 
+routeMatch.patch('/:id/finish', authToken, matchController.updateProgress);
+
 routeMatch.get('/inProgress', matchController.getByProgress);
 
 routeMatch.get('/', matchController.getAll);
-
-routeMatch.patch('/:id/finish', matchController.updateProgress);
 
 export default routeMatch;

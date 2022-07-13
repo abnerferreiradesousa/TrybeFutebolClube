@@ -16,7 +16,7 @@ export default class TeamService {
   public async getById(id: number): Promise<Team> {
     const teamData = await this.model.findOne({ where: { id } });
     if (!teamData) {
-      throw errorMessage(StatusCodes.UNAUTHORIZED, 'Not found');
+      throw errorMessage(StatusCodes.NOT_FOUND, 'There is no team with such id!');
     }
     return teamData;
   }

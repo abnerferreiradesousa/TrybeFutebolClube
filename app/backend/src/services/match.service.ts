@@ -1,11 +1,16 @@
+import { StatusCodes } from 'http-status-codes';
 import Match from '../database/models/matches';
 import Team from '../database/models/teams';
 import IMatch from '../interfaces/team.interface';
+import TeamService from './team.service';
+import errorMessage from '../utils/error.message';
 
-export default class TeamService {
+export default class MatchService {
   public model = Match;
+  // public helperService;
   constructor(model = Match) {
     this.model = model;
+    // this.helperService = helperService;
   }
 
   public async getAll() {
@@ -27,10 +32,27 @@ export default class TeamService {
     return matchesData;
   }
 
+  // Req 25, 26 nao passam...
+
+  public validAmbiguousTeams = (awayTeam: number, homeTeam: number) => {
+    if (awayTeam === homeTeam) {
+      throw errorMessage(
+        StatusCodes.UNAUTHORIZED,
+        'It is not possible to create a match with two equal teams',
+      );
+    }
+  };
+
   public async create(dataMatch: IMatch) {
-    const matchData = await this.model.create({ ...dataMatch, inProgress: 1 });
+    this.validAmbiguousTeams(dataMatch.awayTeam, dataMatch.homeTeam);
+    const helperService = new TeamService();
+    const [,, { id }] = await Promise.all([
+      helperService.getById(dataMatch.awayTeam),
+      helperService.getById(dataMatch.homeTeam),
+      this.model.create({ ...dataMatch, inProgress: 1 }),
+    ]);
     return {
-      id: matchData.id,
+      id,
       ...dataMatch,
       inProgress: true,
     };
