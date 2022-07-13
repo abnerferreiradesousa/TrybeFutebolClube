@@ -46,4 +46,15 @@ export default class MatchController {
       next(error);
     }
   };
+
+  public update = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const service = new MatchService();
+      const matchData = { ...req.body, id: Number(req.params.id) };
+      const message = await service.update(matchData);
+      res.status(StatusCodes.OK).json({ message });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

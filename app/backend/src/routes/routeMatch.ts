@@ -6,6 +6,8 @@ const matchController = new MatchController();
 
 const routeMatch = Router();
 
+routeMatch.patch('/:id', matchController.update);
+
 routeMatch.post('/', authToken, matchController.create);
 
 routeMatch.patch('/:id/finish', authToken, matchController.updateProgress);

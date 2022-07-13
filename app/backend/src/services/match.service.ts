@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import Match from '../database/models/matches';
 import Team from '../database/models/teams';
-import IMatch from '../interfaces/team.interface';
+import { IMatch, IBoardGoals } from '../interfaces/team.interface';
 import TeamService from './team.service';
 import errorMessage from '../utils/error.message';
 
@@ -64,5 +64,13 @@ export default class MatchService {
       { where: { id } },
     );
     return progress && 'Finished';
+  }
+
+  public async update({ id, homeTeamGoals, awayTeamGoals }: IBoardGoals) {
+    const matchUpdated = await this.model.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+    return matchUpdated;
   }
 }
