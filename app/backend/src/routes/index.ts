@@ -5,8 +5,8 @@ import routeMatch from './routeMatch';
 
 const route = Router();
 
+route.use('/matches', routeMatch);
 route.use('/login', routeUser);
 route.use('/teams', routeTeam);
-route.use('/matches', routeMatch);
 
 export default route;
