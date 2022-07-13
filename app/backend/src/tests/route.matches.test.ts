@@ -8,7 +8,6 @@ import Match from '../database/models/matches';
 import * as jwt from 'jsonwebtoken'
 
 import { Response } from 'superagent';
-import ITeam from '../interfaces/team.interface';
 import { Model } from 'sequelize';
 
 chai.use(chaiHttp);

@@ -1,5 +1,6 @@
 import Match from '../database/models/matches';
 import Team from '../database/models/teams';
+import IMatch from '../interfaces/team.interface';
 
 export default class TeamService {
   public model = Match;
@@ -24,5 +25,14 @@ export default class TeamService {
         { model: Team, as: 'teamHome', attributes: ['teamName'] },
       ] });
     return matchesData;
+  }
+
+  public async create(dataMatch: IMatch) {
+    const matchData = await this.model.create({ ...dataMatch, inProgress: 1 });
+    return {
+      id: matchData.id,
+      ...dataMatch,
+      inProgress: true,
+    };
   }
 }

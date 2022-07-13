@@ -18,7 +18,7 @@ const authToken = (req: MyRequest, res: Response, next: NextFunction) => {
     req.user = data;
     next();
   } catch (error) {
-    next(errorMessage(StatusCodes.UNAUTHORIZED, 'INVALID_TOKEN'));
+    next(errorMessage(StatusCodes.UNAUTHORIZED, 'Token must be a valid token'));
   }
 };
 
