@@ -6,9 +6,7 @@ interface IBoardGoals {
 
 interface IMatch extends IBoardGoals {
   homeTeam: number;
-  // homeTeamGoals: number;
   awayTeam: number;
-  // awayTeamGoals: number;
 }
 
 export {
