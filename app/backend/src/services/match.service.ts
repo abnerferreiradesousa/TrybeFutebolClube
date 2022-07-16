@@ -7,10 +7,8 @@ import errorMessage from '../utils/error.message';
 
 export default class MatchService {
   public model = Match;
-  // public helperService;
   constructor(model = Match) {
     this.model = model;
-    // this.helperService = helperService;
   }
 
   public async getAll() {

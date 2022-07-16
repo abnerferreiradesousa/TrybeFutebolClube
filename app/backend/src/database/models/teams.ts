@@ -3,8 +3,10 @@ import db from '.';
 // import Match from './matches';
 
 class Team extends Model {
+  // [x: string]: any;
   id: number;
   teamName: string;
+  // matchesHome: any;
 }
 
 Team.init({

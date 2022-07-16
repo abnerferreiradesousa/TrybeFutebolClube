@@ -9,7 +9,12 @@ interface IMatch extends IBoardGoals {
   awayTeam: number;
 }
 
+interface IMatchTeams extends IMatch {
+  inProgress: boolean;
+}
+
 export {
   IMatch,
   IBoardGoals,
+  IMatchTeams,
 };

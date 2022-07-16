@@ -11,7 +11,6 @@ export default class UserService {
 
   public async login(email: string): Promise<string> {
     const userData = await this.model.findOne({ where: { email } });
-    console.log(userData, 'auqidjskfkkls');
     if (!userData) {
       throw errorMessage(StatusCodes.UNAUTHORIZED, 'Incorrect email or password');
     }

@@ -6,8 +6,8 @@ import routeLeader from './routeLeader';
 
 const route = Router();
 
-route.use('/matches', routeMatch);
 route.use('/login', routeUser);
+route.use('/matches', routeMatch);
 route.use('/teams', routeTeam);
 route.use('/leaderboard', routeLeader);
 
