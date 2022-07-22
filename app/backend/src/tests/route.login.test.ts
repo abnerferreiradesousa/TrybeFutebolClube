@@ -14,9 +14,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Rota /login', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
 
   describe('1 - Quando existe usuário no database', () => {
 
@@ -108,18 +105,6 @@ describe('Rota /login', () => {
       expect(chaiHttpResponse.status).to.be.equal(400)
       expect(chaiHttpResponse.body.message).to.be.eql("All fields must be filled")
     });
-
-    // it('6 - Retorna erro quando senha não corresponde ao email informado.', async () => {
-    //   chaiHttpResponse = await chai
-    //     .request(app)
-    //     .post('/login')
-    //     .send({
-    //       "email": "hulkbravo@gmail.com",
-    //       "password": "hulkFeliz"
-    //     })
-    //   expect(chaiHttpResponse.status).to.be.equal(401)
-    //   expect(chaiHttpResponse.body.message).to.be.eql("Incorrect email or password")
-    // });
   })
 
   describe('2 - Quando não existe um usuário correspondente no database.', () => {

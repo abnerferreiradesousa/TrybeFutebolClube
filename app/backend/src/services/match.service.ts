@@ -30,8 +30,6 @@ export default class MatchService {
     return matchesData;
   }
 
-  // Req 25, 26 nao passam...
-
   public validAmbiguousTeams = (awayTeam: number, homeTeam: number) => {
     if (awayTeam === homeTeam) {
       throw errorMessage(

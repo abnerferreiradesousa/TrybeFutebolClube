@@ -2,18 +2,6 @@ import { Model, INTEGER, BOOLEAN } from 'sequelize';
 import db from '.';
 import Team from './teams';
 
-// O que é o exclamação no TS?
-
-// Tem como rodar mongoDb no docker?
-
-// O que está linkando a tabela teams com a tabela matches?
-
-// OtherModel.belongsTo(Example, { foreignKey: 'campoA', as: 'campoEstrangeiroA' });
-// OtherModel.belongsTo(Example, { foreignKey: 'campoB', as: 'campoEstrangeiroB' });
-
-// Example.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
-// Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
-
 class Match extends Model {
   id!: number;
   homeTeam: number;
@@ -56,8 +44,6 @@ Match.init({
   modelName: 'match',
   timestamps: false,
 });
-
-// P q hasOne ao invés belongsTo?
 
 Match.belongsTo(Team, { foreignKey: 'homeTeam', as: 'teamHome' });
 Match.belongsTo(Team, { foreignKey: 'awayTeam', as: 'teamAway' });

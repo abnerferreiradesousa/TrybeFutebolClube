@@ -43,9 +43,6 @@ describe('Rota /teams', () => {
       sinon
         .stub(Team, "findAll")
         .resolves(mockFindAll);
-        // sinon
-        // .stub(jwt, "sign")
-        // .resolves(mockJwt.token);
     });
 
     after(()=>{
@@ -83,14 +80,10 @@ describe('Rota /teams', () => {
       sinon
         .stub(Team, "findOne")
         .resolves(mockFindOne);
-        // sinon
-        // .stub(jwt, "sign")
-        // .resolves(mockJwt.token);
     });
 
     after(()=>{
       (Team.findOne as sinon.SinonStub).restore();
-      // (jwt.sign as sinon.SinonStub).restore();
     })
 
     it('2 - É possível buscar um time individualmente com sucesso.', async () => {

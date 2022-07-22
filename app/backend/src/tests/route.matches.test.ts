@@ -46,14 +46,10 @@ describe('Rota /matches', () => {
       sinon
         .stub(Match, "findAll")
         .resolves(mockFindAll as unknown as Match[]) ;
-        // sinon
-        // .stub(jwt, "sign")
-        // .resolves(mockJwt.token);
     });
 
     after(()=>{
       (Match.findAll as sinon.SinonStub).restore();
-      // (jwt.sign as sinon.SinonStub).restore();
     })
 
     it('1 - É possível buscar todos os times com sucesso.', async () => {

@@ -19,8 +19,6 @@ export default class UserService {
     return token;
   }
 
-  // Como pegar os dados que estão dentro do userData?
-
   public async getRole(id: number): Promise<string> {
     const userData = await this.model.findOne({ where: { id } });
     if (!userData) {
