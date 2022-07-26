@@ -97,12 +97,6 @@ Esse projeto é composto de 4 seções principais:
 3. Partidas
 4. Placar 
 
-## Database
-  - Comece rodando o comando `npm run build` na pasta do `back-end` para fazer o _build_ da aplicação;
-  - [Nessa seção](#sequelize) temos o diagrama de entidades;
-  - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, pois ele é necessário para a avaliação dos requisitos dessa seção;
-  - A leitura da seção `Bônus: Model com Sequelize` no conteúdo de `TypeScript: Tipagem Estática e Generics`, contido [nesse link](https://app.betrybe.com/course/back-end/typescript/tipagem-estatica-e-generics/68eccf60-a982-4455-837d-da31e8726be5), é recomendável!
-
 ## Seção 1: Users e Login
 
 - A rota utilizada deve ser (`/login`);
@@ -118,19 +112,6 @@ Esse projeto é composto de 4 seções principais:
     "password": "string"
   }
   ```
-
-### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
-
-  - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
-
-### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src`, com um mínimo de 7 linhas cobertas
-
-  **Sugestões:**
-  - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;  
-  - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para tanto, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`;
-  - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
-
 ### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
 
   - A rota de ser do tipo `POST`;
@@ -145,12 +126,6 @@ Esse projeto é composto de 4 seções principais:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
   }
   ```
-
-### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src`, com um mínimo de 19 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
 ### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar um email no front-end
 
   - O avaliador verificará se fazer o login sem um email, haverá o retorno de status _bad request_.
@@ -159,12 +134,6 @@ Esse projeto é composto de 4 seções principais:
   ```json
     { "message": "All fields must be filled" }
   ```
-
-### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
 ### 7 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar uma senha no front-end
 
   - O avaliador verificará se fazer login sem senha, o retorno será status _bad request_.
@@ -173,13 +142,6 @@ Esse projeto é composto de 4 seções principais:
   ```json
     { "message": "All fields must be filled" }
   ```
-
-
-### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src`, com um mínimo de 35 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
 ### 9 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado.
@@ -188,13 +150,6 @@ Esse projeto é composto de 4 seções principais:
   ```json
     { "message": "Incorrect email or password" }
   ```
-
-
-### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
-
 ### 11 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com uma senha inválida no front-end
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado.
@@ -214,19 +169,6 @@ Esse projeto é composto de 4 seções principais:
   ```json
     { "role": "admin" }
   ```
-
-### 13 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src`, com um mínimo de 70 linhas cobertas
-
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/teams`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
-## Seção 2: Times
-
- - Os requisitos a seguir consideram o consumo da rota `/teams` para retornar os nomes dos times associados à partida na renderização do front-end
-
-### 14 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
-
-  - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
 ### 15 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
 
@@ -260,19 +202,6 @@ Esse projeto é composto de 4 seções principais:
 	"teamName": "Cruzeiro"
 }
 ```
-
-### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
-
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
-
-## Seção 3: Partidas
-
-  - Para os requisitos de criação de partidas, é necessário que a rota `/teams` funcione corretamente. 
-
-### 18 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
-
-  - O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
 ### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
 
@@ -402,11 +331,6 @@ Esse projeto é composto de 4 seções principais:
     }
   ]
   ```
-
-### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
 ### 23 - Desenvolva a rota `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
