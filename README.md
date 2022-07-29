@@ -344,7 +344,7 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard Home
 
-### 11 - O endpoint `/leaderboard/home` com método `GET` retorna as classificações dos times.
+### 11 - O endpoint `/leaderboard/home` com método `GET` retorna as classificações dos times de casa.
 
  <details>  
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -547,12 +547,9 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-
-
-<
 ## Leaderboard away
 
-### 12 - O endpoint `/leaderboard/away` com método `GET`, filtra as classificações dos times.
+### 12 - O endpoint `/leaderboard/away` com método `GET`, retona as classificações dos times de fora.
 
 <details>  
 <summary><strong> Retorno esperado: </strong></summary> <br/>
