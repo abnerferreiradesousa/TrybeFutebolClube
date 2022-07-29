@@ -121,7 +121,7 @@ Esse projeto é composto de 4 seções principais:
 
 ### ⚠️ Todos os campos abaixo devem estar preenchidos e de forma adequado, caso contrário será retornado um erro descrevendo o problema.
 
-### 1 - O endpoint `/login` no back-end com o método `POST`.
+### 1 - O endpoint `/login` no back-end com o método `POST`, retona um token.
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
 
@@ -132,9 +132,9 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
   
-### 12 - Desenvolva o endpoint `/login/validate` no back-end de maneira que ele retorne os dados corretamente no front-end
+### 2 - O endpoint `/login/validate` no back-end com o método `GET`, retorna a função de um usuário.
 
-  - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
+  - Essat rota deve receber um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login, vc pode conseguir esse token na rota `/login`;
 
   - O avaliador verificará se ao tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário.
 
@@ -143,9 +143,9 @@ Esse projeto é composto de 4 seções principais:
     { "role": "admin" }
   ```
 
-### 15 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
+### 3 - O endpoint `/teams` no back-end com método `GET`, retorna todos os times.
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+  - Resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 [
@@ -165,9 +165,9 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-### 16 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
+### 4 - O endpoint `/teams/:id` no back-end com método `GET`, retornar dados de um time específico 
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+  - Resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 {
