@@ -176,11 +176,7 @@ Esse projeto é composto de 4 seções principais:
 }
 ```
 
-### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
-
-  - A rota deve ser um `GET` e retorna uma lista de partidas;
-
-  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
+### 5 - O endpoint `/matches` com método `GET` retorna uma lista de partidas.
 
     Exemplo de retorno:
     ```json
@@ -217,13 +213,7 @@ Esse projeto é composto de 4 seções principais:
     ]
     ```
 
-  - **OBS:** Você deverá definir os relacionamentos para ```teamHome``` e ```teamAway``` somente na model de partidas.
-
-### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
-
-  - Será validado que, ao escolher a opção de partidas em andamento, serão filtradas todas as partidas em andamento;
+### 6 - O endpoint `/matches` com método `GET` retorna somente as partidas em andamento.
 
   - Essa requisição deverá usar `query string` para definir o parâmetro:
     ex: `matches?inProgress=true`
@@ -262,11 +252,7 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
-### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
-
-  - Será validado que,ao escolher a opção de partidas finalizadas, serão filtradas todas as partidas finalizadas;
+### 7 - O endpoint `/matches` com método `GET` retorna somente as partidas finalizadas.
 
   - Essa requisição deverá usar `query string` para definir o parâmetro.
     ex: `matches?inProgress=false`
@@ -305,19 +291,15 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
-### 23 - Desenvolva a rota `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+### 8 - O endpoint `/matches` com método `POST` salva uma partida com o status de inProgress como true no banco de dados
 
-  - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
-
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
-
-  - A partida só pode ser criada com token JWT validado;
+  - Retornar a partida inserida no banco de dados;
 
   - O corpo da requisição terá o seguinte formato:
   ```json
   {
-    "homeTeam": 16, // O valor deve ser o id do time
-    "awayTeam": 8, // O valor deve ser o id do time
+    "homeTeam": 16,
+    "awayTeam": 8, 
     "homeTeamGoals": 2,
     "awayTeamGoals": 2
   }
@@ -335,22 +317,17 @@ Esse projeto é composto de 4 seções principais:
     "inProgress": true,
   }
   ```
-
-### 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
-
-  - A rota deve ser do tipo `PATCH`;
+### 9 - O endpoint `/matches/:id/finish` com método `PATCH` altera o status de inProgress para false no banco de dados
 
   - Será recebido o `id` pelo parâmetro da URL;
 
-  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
-	
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
 
   ```json
   { "message": "Finished" }
   ```
 
-### 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
+### 10 Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
 
   - Será validado que não é possível inserir uma partida com times iguais;
 
