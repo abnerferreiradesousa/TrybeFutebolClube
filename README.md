@@ -116,13 +116,14 @@ Esse projeto é composto de 4 seções principais:
     "password": "string"
   }
   ```
-### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
+  
+## 👇 Abaixo estão listados os endpoints da API 👇
 
-  - A rota de ser do tipo `POST`;
+### ⚠️ Todos os campos abaixo devem estar preenchidos e de forma adequado, caso contrário será retornado um erro descrevendo o problema.
+
+### 1 - O endpoint `/login` no back-end com o método `POST`.
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
-
-- As senhas que existem no banco de dados estão encriptadas. Veja a [seção de Criptografia de Senhas](#Criptografia-de-senhas) para mais detalhes de como comparar a senha do banco com a senha do corpo da requisição. 
 
 - Se o login foi feito com sucesso, o resultado retornado deverá ser similar ao exibido abaixo, com um status http `200`:
   ```json
@@ -130,39 +131,7 @@ Esse projeto é composto de 4 seções principais:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
   }
   ```
-### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar um email no front-end
-
-  - O avaliador verificará se fazer o login sem um email, haverá o retorno de status _bad request_.
-
-  - Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `400`:
-  ```json
-    { "message": "All fields must be filled" }
-  ```
-### 7 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar uma senha no front-end
-
-  - O avaliador verificará se fazer login sem senha, o retorno será status _bad request_.
-
-  - Se o login não tiver o campo "password", o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
-  ```json
-    { "message": "All fields must be filled" }
-  ```
-### 9 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
-
-  - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado.
-
-  - Se o login tiver o "email" **inválido**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-### 11 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com uma senha inválida no front-end
-
-  - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado.
-
-  - Se o login tiver a "senha" **inválida**, o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-
+  
 ### 12 - Desenvolva o endpoint `/login/validate` no back-end de maneira que ele retorne os dados corretamente no front-end
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
