@@ -4,13 +4,11 @@
 
   O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
 
-  No time de desenvolvimento do `TFC`, seu *squad* ficou responsável por desenvolver uma API (utilizando o método `TDD`) e também integrar *- através do docker-compose -* as aplicações para que elas funcionem consumindo um banco de dados.
+  No time de desenvolvimento do `TFC`, utilizei TDD para como boa prática de desenvolvimento.
 
-  Nesse projeto, você vai construir **um back-end dockerizado utilizando modelagem de dados através do Sequelize**. Seu desenvolvimento deve **respeitar regras de negócio** providas no projeto e **sua API deve ser capaz de ser consumida por um front-end já provido nesse projeto**.
+  Nesse projeto, utilizei **um back-end dockerizado utilizando modelagem de dados através do Sequelize**.
 
-  Para adicionar uma partida é necessário ter um _token_, portanto a pessoa deverá estar logada para fazer as alterações. Teremos um relacionamento entre as tabelas `teams` e `matches` para fazer as atualizações das partidas.
-
-  O seu back-end deverá implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema.
+  Para adicionar uma partida é necessário ter um _token_, portanto a pessoa deverá estar logada para fazer as alterações.
 
 </details>
 
@@ -52,21 +50,11 @@ Na sua máquina você deve ter:
 </details>
 
 <details>
-<summary><strong>🐳 Configuração Docker</strong></summary><br />
-
->  👀 **De olho na dica:**
-> Lembre-se, você pode revisitar os conteúdos sobre Docker:
-> - [Dockerfile](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864) (Seção Dockerfile - Comandos Básicos)
-> - [docker-compose](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a) (Seção Compose File - Parte I)
-> - [Manipulação e Criação de Imagens no Docker](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864)
-</details>
 
 <details>
 <summary><strong> ⚠️ Inicialização do compose e verificação dos logs das aplicações </strong></summary><br />
 
  #### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
-
-  Os testes vão utilizar a sua aplicação do compose para fazer as validações, portanto **é essencial que ela esteja funcionando corretamente** para que os testes passem!
 
   - Para isso, garanta que as aplicações, tanto do back, quanto do front-end, possuem arquivos `Dockerfile` válidos;
   - Utilize os scripts de apoio `npm run compose:up` / `npm run compose:down`, para facilitar a execução do seu *compose*.
@@ -86,8 +74,6 @@ Na sua máquina você deve ter:
   DB_HOST=localhost 
   DB_PORT=3306
   ```
-
-  **⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
 
   **⚠️ Não defina variável de ambiente para o nome do banco, o mesmo deve se manter com o nome `TRYBE_FUTEBOL_CLUBE`. ⚠️**
 
