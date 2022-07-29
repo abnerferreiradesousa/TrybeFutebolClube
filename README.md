@@ -79,7 +79,7 @@ Na sua máquina você deve ter:
 
 </details>
 
-<summary><strong> Requisitos </strong></summary>
+<summary><strong> Rotas </strong></summary>
 
 Esse projeto é composto de 4 seções principais:
 1. User e Login
