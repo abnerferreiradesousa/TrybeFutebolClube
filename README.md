@@ -21,6 +21,10 @@
 	* `git clone git@github.com:tryber/sd-017-trybe-futebol-clube.git`.
 - Entre na pasta do repositório que você acabou de clonar:
 	* `cd sd-017-trybe-futebol-clube`
+- Em seguida, entre na pasta app:
+	* `cd app`
+- Em seguida, entre na pasta backend:
+	* `cd backend`
 
   2. Instale as dependências [**Caso existam**]
 	*`npm install`
