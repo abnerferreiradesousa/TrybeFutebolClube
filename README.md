@@ -552,7 +552,7 @@ Esse projeto é composto de 4 seções principais:
 <
 ## Leaderboard away
 
-### 31 - Desenvolva o endpoint `/leaderboard/away` com método `GET`, filtra as classificações dos times na tela de classificação
+### 12 - Desenvolva o endpoint `/leaderboard/away` com método `GET`, filtra as classificações dos times na tela de classificação
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados.
 <details>  
@@ -756,7 +756,7 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível: filtrar as classificações dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 13 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível: filtrar as classificações dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - O retorno deve continuar como no [leaderboard](#leaderboards);
 
@@ -962,16 +962,7 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-## Leaderboard
-
-  - Esse endpoint vai alimentar uma tabela idêntica ao exemplo abaixo no front-end:
-
-    | Classificação | Time        | P   | J   | V   | E   | D   | GP  | GC  | SG  | %    |
-    | ------------- | ----------- | --- | --- | --- | --- | --- | --- | --- | --- | ---- |
-    | 1             | Corinthians | 38  | 15  | 12  | 2   | 1   | 44  | 13  | 31  | 84.4 |
-
-
-### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
+### 14 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards);
 
@@ -1177,7 +1168,7 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível: filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
+### 15 - Desenvolva o endpoint /leaderboard de forma que seja possível: filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
 
   - O retorno deve continuar como no [leaderboard](#leaderboards);
 
